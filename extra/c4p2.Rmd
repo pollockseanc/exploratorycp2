@@ -1,0 +1,262 @@
+---
+title: "course project 2"
+author: "Sean Pollock"
+date: "March 1, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+library(nlme)
+library(lattice)
+xyplot(weight ~ Time | Diet, BodyWeight)
+```
+
+```{r}
+
+library(datasets)
+data(airquality)
+```
+
+
+```{r}
+## This first line will likely take a few seconds. Be patient!
+NEI <- readRDS("summarySCC_PM25.rds")
+SCC <- readRDS("Source_Classification_Code.rds")
+```
+
+```{r}
+nei_data <- NEI
+scc_data <- SCC
+```
+
+```{r}
+nei_data$fips <- as.factor(nei_data$fips)
+```
+
+```{r}
+nei_data$SCC <- as.factor(nei_data$SCC)
+nei_data$Pollutant <- as.factor(nei_data$Pollutant)
+nei_data$type <- as.factor(nei_data$type)
+nei_data$year <- as.factor(nei_data$year)
+
+```
+
+```{r}
+with(nei_data, plot(year, emisum ))
+```
+
+```{r}
+emisum <- tapply(nei_data$Emissions, nei_data$year, sum)
+```
+
+```{r}
+table(nei_data$year)
+```
+
+```{r 1}
+plot(unique(nei_data$year), emisum)
+```
+
+```{r 2}
+sub2<-subset(nei_data, fips == 24510)
+plot(unique(sub2$year), tapply(sub2$Emissions, sub2$year, sum))
+```
+
+```{r}
+
+head(sub2)
+```
+
+```{r 3}
+
+```
+
+```{r}
+sub <- 
+```
+
+```{r 4}   
+sub2<-subset(nei_data, )
+plot(unique(sub2$year), tapply(sub2$Emissions, sub2$year, sum))
+```
+
+```{r}
+codes <- filter(scc_data, EI.Sector %in% "[Cc]oal"  )# %>%
+        #select(SCC)
+```
+
+```{r}
+subset3 <- scc_data[grep("[Cc]oal", scc_data$EI.Sector),]
+codes <- subset3$SCC
+
+```
+
+```{r}
+#subset3 <- subset3[ grep("[Cc]omb", subset3$EI.Sector), ]
+```
+
+```{r}
+sub5<- subset(nei_data, 
+```
+
+```{r}
+aggem<- aggregate(Emissions ~ year, nei_data, sum)
+```
+
+```{r}
+#http://rstudio-pubs-static.s3.amazonaws.com/7953_4e3efd5b9415444ca065b1167862c349.html
+#format y ,x 
+barplot(aggem$year, aggem$Emissions)
+```
+
+```{r}
+barplot(aggem$Emissions, names=aggem$year)
+```
+
+```{r}
+z <- ggplot(aggemtype, aes(type, Emissions), facets = .~year)
+zxc <- ggplot(aggemtype, aes(year, Emissions))
+```
+
+```{r}
+z+geom_point()
+zxc+geom_point() + facet_grid(.~type)
+#geom_bar(aes(fill=fl))
+```
+
+```{r}
+#doesnt work
+sub1<-subset(NEI, fips == 06037 & type == "ON-ROAD")
+#works, why did it workt he other wya before?
+sub3 <- subset(NEI, fips == "06037" & type == "ON-ROAD")
+```
+
+```{r}
+#works
+sub1 <- filter(NEI, fips == "06037" & type == "ON-ROAD")
+```
+
+```{r}
+#does not work to create two graphso n one line with par(mfr=1,2)
+#x<-ggplot(aggemba, aes(year, Emissions)) +
+    #geom_point()
+#z<-ggplot(aggemla, aes(year, Emissions)) +
+#     geom_point()
+```
+
+```{r}
+#cannot output two on same line
+barplot(aggemba$Emissions, names=aggemba$year)
+barplot(aggemla$Emissions, names=aggemla$year)
+
+```
+
+```{r}
+s1 <- c("a", "cd", "asf")
+s2 <- c("a", "cd")
+s3 <- c("hello", "world", "test")
+```
+
+```{r}
+sdf <- data.frame(s1, s3)
+```
+
+```{r}
+subset(nei, )
+```
+
+```{r}
+setdiff(s1,s2)
+```
+
+```{r}
+match(s1,s2)
+```
+
+```{r}
+s3[(s1 %in% s2)]
+```
+
+```{r}
+s1 %in% s2
+```
+
+```{r}
+scclocs <- NEI$SCC %in% codes
+```
+
+```{r}
+codes %iN% scc$%
+```
+
+```{r}
+head(codes)
+```
+
+```{r}
+scc$SCC[1] %in% codes
+```
+
+```{r}
+neisub <- subset(NEI, scclocs == T)
+```
+
+```{r}
+{
+
+
+#Create barplots
+barplot(aggemba$Emissions, names=aggemba$year, main = "Baltimore City")
+barplot(aggemla$Emissions, names=aggemla$year, main = "Los Angeles")
+mtext("Question 6", outer = T)
+
+}
+```
+
+```{r}
+#Create plots
+plot(aggemba$year, aggemba$Emissions,  type = "p", main = "Baltimore City")
+plot(aggemla$year, aggemla$Emissions,  type = "p", , main = "Los Angeles")
+mtext("Question 6", outer = T)
+
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
